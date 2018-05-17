@@ -1,0 +1,43 @@
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="user-index-single">
+    <h1 class="text center">新規投稿</h1>
+    <%= form_for(@micropost) do |f| %>
+
+    <%= f.label :image,"画像" %>
+    <%= f.file_field :image %>
+
+    <%= f.label :denimname,"デニム名" %>
+    <%= f.text_area :denimname,class:'form-control',placeholder: "ex Levis501" %>
+
+    <%= f.label :brandname,"ブランド名" %>
+    <%= f.text_area :brandname,class:'form-control',placeholder: "ex EDWIN" %>
+
+    <%= f.label :type,"タイプ" %>
+    <%= select_tag 'micropost[type]',options_for_select(["ストレート","テーパード","スリム","スキニー"]) %>
+
+    <%= f.label :color,"カラー" %>
+    <%= select_tag 'micropost[color]',options_for_select(["ブルー","ブラック","ホワイト","インディゴ","その他"]) %>
+
+    <%= f.label :comment,'コメント' %>
+    <%= f.text_area :comment,class:'form-control',placeholder: "ex 購入日時、履き心地、サイズ感など…" %>
+
+    <%= f.label :popular,'人気度' %>
+    <%= select_tag 'micropost[popular]',options_for_select(["1","2","3","4","5"]) %>
+
+    <%= f.label :fit,'履き心地' %>
+    <%= select_tag 'micropost[fit]',options_for_select(["1","2","3","4","5"]) %>
+
+    <%= f.label :price,'価格' %>
+    <%= select_tag 'micropost[price]',options_for_select(["1","2","3","4","5"]) %>
+
+    <%= f.label :design,'デザイン' %>
+    <%= select_tag 'micropost[design]',options_for_select(["1","2","3","4","5"]) %>
+
+    <%= f.submit "投稿する",class: "btn btn-info" %>
+
+    <% end %>
+    </div>
+  </div>
+</div>

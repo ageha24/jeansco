@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="micropost-index-single">
+        <h1 class="text-center">投稿一覧</h1>
+        <h5 class="text-center"><%= @micropost.count %>件の投稿があります</h5>
+
+        <!-- 検索機能 -->
+        <h5 class="text-center">投稿検索</h5>
+        <%= form_tag(microposts_path,method: :get) do %>
+          <%= text_field_tag :search %>
+          <%= submit_tag '検索する', :denimname => nil %>
+        <% end %>
+
+        <!-- micropostを表示　-->
+        <% @micropost.each do |micropost| %>
+          <div class="box1">
+            <a href="/microposts/<%=micropost.id %>" >
+              <p><%= image_tag micropost.image.url if micropost.image? %></p>
+              <index-size>ユーザー名</index-size>
+              <p><%= micropost.user.name %>さん</p>
+              <index-size>デニム名</index-size>
+              <p><%= micropost.denimname %></p>
+
+              <!-- likeを表示 -->
+              <% if micropost.likes_count? %>
+                <p><%= micropost.likes_count %>件のお気に入りがあります</p>
+              <% else %>
+                <p>0件のお気に入りがあります</p>
+              <% end %>
+            </a>
+          </div>
+        <% end %>
+
+        <%= will_paginate @micropost %>
+      </div>
+    </div>
+  </div>
+</div>

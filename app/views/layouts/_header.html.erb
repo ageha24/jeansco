@@ -1,0 +1,19 @@
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="container">
+    <%=link_to "Jeans.Co",root_path,id: "logo" %>
+    <nav>
+      <ul class="nav navbar-nav navbar-right">
+        <li><%=link_to "Jeans.Coとは",'#' %></li>
+        <li><%=link_to "投稿一覧",microposts_path %></li>
+        <% if logged_in? %>
+        <li><%=link_to "投稿する",new_micropost_path %></li>
+        <li><%=link_to "マイページ",current_user %></li>
+        <li><%=link_to "ログアウト",logout_path,method: :delete %>
+        <% else %>
+        <li><%=link_to "会員登録",signup_path %></li>
+        <li><%=link_to "ログイン",login_path %></li>
+        <% end %>
+      </ul>
+    </nav>
+  </div>
+</header>

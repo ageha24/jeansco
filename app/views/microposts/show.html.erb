@@ -1,0 +1,57 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="micropost-index-single">
+        <h1 class="text-center">投稿詳細</h1>
+        <show-size>ユーザー名</show-size>
+
+          <!-- micropostを表示　-->
+          <p><a href="/users/<%= @micropost.user.id %>" >
+          <%= @micropost.user.name %></a>
+          </p>
+          <p>⬆︎投稿したユーザーの詳細はこちら</p>
+          <%= image_tag @micropost.image.url if @micropost.image? %><br>
+          <show-size>デニム名</show-size>
+          <p><%= @micropost.denimname %></p>
+          <show-size>ブランド名</show-size>
+          <p><%= @micropost.brandname %></p>
+          <show-size>タイプ</show-size>
+          <p><%= @micropost.type %></p>
+          <show-size>カラー</show-size>
+          <p><%= @micropost.color %></p>
+          <show-size>コメント</show-size>
+          <p><%= simple_format(@micropost.comment) %></p>
+
+          <!-- micropostのレーダーチャート -->
+          <show-size>レーダーチャート(見える化)</show-size>
+          <canvas id="myChart" width="200" height="200"></canvas>
+
+          <!-- likeのajax -->
+          <p>⬇︎お気に入り登録する</p>
+          <div id="ajax">
+            <p><%= render partial: 'likes/like', locals: { micropost: @micropost, likes: @likes } %></p>
+          </div>
+
+
+          <p><%= link_to "投稿内容の編集",edit_micropost_path,class: 'btn btn-info'%></p>
+          <p><%= link_to "投稿削除",@micropost,method: :delete,class: "btn btn-info",
+                              data: {confirm: "本当に削除しますか?"} %></p>
+        
+     </div>
+    </div>
+  </div>
+</div>
+<script>
+var ctx = document.getElementById("myChart").getContext('2d');
+var myRadarChart = new Chart(ctx, {
+    type: 'radar',
+    data: {
+    labels: ['人気度', '価格', '履き心地', 'デザイン'],
+    datasets: [{
+        data: [<%= @micropost.popular %>, <%= @micropost.price %>,<%= @micropost.fit %>,<%= @micropost.design %>]
+    }]
+}
+});
+myRaderChart.update();
+</script>

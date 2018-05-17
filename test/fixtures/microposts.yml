@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  denimname: MyString
+  brandname: MyString
+  type: 
+  color: MyString
+  image: MyString
+  user: one
+
+two:
+  denimname: MyString
+  brandname: MyString
+  type: 
+  color: MyString
+  image: MyString
+  user: two

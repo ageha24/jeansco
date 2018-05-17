@@ -1,0 +1,173 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+/* universal */
+body{
+  padding-top: 30px;
+}
+section{
+  overflow: auto;
+}
+textarea{
+  resize: vertical;
+}
+.center{
+  text-align: center;
+}
+.center h1{
+  margin-bottom: 0px;
+}
+
+/* typography */
+h1,h2,h3,h4,h5,h6{
+  line-height: 3;
+}
+h1{
+  font-size: 36px;
+  letter-spacing: -2px;
+  padding-top: 40px;
+  margin-bottom: 10px;
+  text-align: center;
+  color: blue;
+}
+h2{
+  font-size: 20px;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: normal;
+  color: blue;
+}
+p{
+  font-size: 1.1em;
+  line-height: 1.7em;
+}
+
+/*header */
+
+#logo{
+  float: left;
+  margin-right: 10px;
+  font-size: 1.7em;
+  color: white;
+  letter-spacing: -1px;
+  padding-top: 9px;
+  font-weight: bold;
+}
+#logo:hover{
+  color: white;
+  text-decoration: none;
+}
+
+/*footer */
+footer{
+  margin-top: 0px;
+  padding-top: 15px;
+  border-top: solid 3px #000000;
+  color: black;
+}
+footer small{
+  float: left;
+}
+footer ul {
+  float: right;
+  list-style: none;
+}
+footer ul li{
+  float: left;
+  margin-left: 15px;
+}
+
+/* mixins,variables,etc */
+$gray-medium-light: #eaeaea;
+@mixin box_sizing{
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+/* miscellaneous */
+.debug_dump{
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 45px;
+  @include box_sizing;
+}
+
+/* forms */
+input,textarea,select,.uneditable-input{
+  border: 1px solid #bbb;
+  width: 100%;
+  margin-bottom: 15px;
+  @include box_sizing;
+}
+input{
+  height: auto !important;
+}
+#error_explanation{
+  color: red;
+  ul{
+    color: red;
+    margin: 0 0 30px 0;
+  }
+}
+
+.field_with_errors{
+  @extend  .has-error;
+  .form-control{
+    color: $state-danger-text;
+  }
+}
+
+.checkbox{
+  margin-top: -10px;
+  margin-bottom:  10px;
+  span{
+    margin-left: 20px;
+    font-weight: normal;
+  }
+}
+
+#session_remember_me{
+  width: auto;
+  margin-left: 0;
+}
+
+/*背景画面 */
+.container-background{
+  width: 100vw;
+  height: 100vh;
+  background-image: image-url('jeans.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: #464646;}
+.container-background h1,h2{
+  color: white;
+
+}
+
+index-size{
+  font-size: 24px;
+  border-bottom: 3px solid blue;
+}
+show-size{
+  font-size: 24px;
+  border-bottom: 3px solid blue;
+}
+
+.user-index-single{
+  padding: 20px 30px 20px 30px;
+  margin-top: 0px;
+  border: solid 3px #000000;
+  border-radius: 3px;
+
+}
+
+.micropost-index-single {
+    padding: 20px 30px 20px 30px;
+    margin-top: 0px;
+    border: solid 3px #000000;
+    border-radius: 3px;
+    }

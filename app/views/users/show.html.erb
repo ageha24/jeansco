@@ -1,0 +1,47 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="user-index-single">
+
+    <!-- user情報記載　-->
+    <h1><%= @user.name %>のページ</h1>
+    <show-size>性別</show-size>
+    <div class="box1">
+      <p><%= @user.gender %></p>
+    </div>
+    <show-size>プロフィール画像</show-size>
+    <p><%= image_tag @user.profileimage.url if @user.profileimage? %></p>
+    <show-size>自己紹介</show-size>
+    <div class="box1">
+      <p><%= simple_format(@user.introduce) %></p>
+    </div>
+
+    <show-size><%= @user.name %>さんの投稿一覧(<%= @micropost.count %>件)</show-size>
+    <!-- userのmicropost -->
+    <% @user.microposts.each do |micropost| %>
+      <div class="box1">
+        <a href="/microposts/<%=micropost.id %>" >
+          <p><%= micropost.denimname %></p>
+          <p><%= image_tag micropost.image %></p>
+        </a>
+      </div>
+    <% end %>
+
+    <show-size><%= @user.name %>さんのお気に入り一覧(<%= @like_microposts.count %>件)</show-size>
+    <!-- userがlikeしているmicropost -->
+    <% @like_microposts.each do |favorite| %>
+      <div class="box1">
+        <a href="/microposts/<%=favorite.id %>">
+        <p><%= favorite.denimname %></p>
+        <p><%= image_tag favorite.image %></p>
+        </a>
+      </div>  
+    <% end %>
+
+    <%= will_paginate @micropost %>
+
+    <p><%= link_to "プロフィール編集",edit_user_path(current_user) ,class: "btn btn-info" %></p>
+    <p><%= link_to "削除",@user,method: :delete,class: "btn btn-info",
+                          data: {confirm: "本当に削除しますか?"} %></p>
+   </div>
+  </div>
+</div>
